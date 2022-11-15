@@ -1,7 +1,8 @@
-from django.db import models
-from django.contrib.auth.models import User
-from django.template.defaultfilters import slugify
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
+from django.db import models
+from django.template.defaultfilters import slugify
+
 
 class Skill(models.Model):
     class Meta:
@@ -123,10 +124,10 @@ class Blog(models.Model):
         super(Blog, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
-        return f'{self.name}'
+        return self.name
 
     def get_absolute_url(self):
-        return f'/blog/{self.slug}'
+        return f"/blog/{self.slug}"
 
 class Certificate(models.Model):
     class Meta:

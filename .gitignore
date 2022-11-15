@@ -1,2 +1,5 @@
 venv/
 digital_resume/digital_resume/__pycache__/
+digital_resume/main/__pycache__/
+digital_resume/main/migrations/__pycache__/
+digital_resume/db.sqlite3

@@ -50,11 +50,13 @@ class Testimonial(models.Model):
     class Meta:
         verbose_name_plural = 'Testimonials'
         verbose_name = 'Testimonial'
+        ordering = ['name']
 
     thumbnail = models.ImageField(blank=True,null=True,upload_to="testimonials")
     name = models.CharField(max_length=100,verbose_name="Name",blank=True,null=True)
     position = models.CharField(max_length=100,verbose_name="Position",blank=True,null=True)
     quote = models.CharField(max_length=1000,verbose_name="Quote",blank=True,null=True)
+    is_active = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return f'{self.name}'
@@ -86,7 +88,7 @@ class Portfolio(models.Model):
 
     date = models.DateField(blank=True,null=True)
     name = models.CharField(max_length=100,verbose_name="Name",blank=True,null=True)
-    description = models.CharField(blank=True,null=True)
+    description = models.CharField(max_length=500,blank=True,null=True)
     body = RichTextField(blank=True,null=True)
     image = models.ImageField(blank=True,null=True,upload_to="portfolio")
     slug = models.SlugField(blank=True,null=True)
@@ -112,7 +114,7 @@ class Blog(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     author =models.CharField(max_length=100,verbose_name="Author",blank=True,null=True)
     name = models.CharField(max_length=100,verbose_name="Name",blank=True,null=True)
-    description = models.CharField(blank=True,null=True)
+    description = models.CharField(max_length=500,blank=True,null=True)
     body = RichTextField(blank=True,null=True)
     slug = models.SlugField(blank=True,null=True)
     image = models.ImageField(blank=True,null=True,upload_to="blog")
@@ -137,7 +139,7 @@ class Certificate(models.Model):
     date = models.DateField(blank=True,null=True)
     name = models.CharField(max_length=100,verbose_name="Name",blank=True,null=True)
     title = models.CharField(max_length=100,verbose_name="Title",blank=True,null=True)
-    description = models.CharField(blank=True,null=True)
+    description = models.CharField(max_length=500,blank=True,null=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self) -> str:
